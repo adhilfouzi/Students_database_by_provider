@@ -3,8 +3,9 @@ import 'package:student_management_using_provider/model/student.dart';
 
 class Student extends GetxController {
   List<MarkModel> stList = [];
+  int id = -1;
   void addStudentMark(MarkModel value) {
-    value.id = (stList.length);
+    value.id = id++;
     stList.add(value);
     print(value);
     update();
