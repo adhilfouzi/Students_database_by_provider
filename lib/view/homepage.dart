@@ -37,47 +37,50 @@ class HomePage extends StatelessWidget {
           child: GetBuilder<Student>(
               // initState: (state) => Student(),
               builder: (controller) {
-            return ListView.builder(
-              itemCount: controller.stList.length,
-              itemBuilder: (context, index) {
-                final core = controller.stList[index];
-                final id = core.id;
-                return Card(
-                  child: ListTile(
-                    // leading: CircleAvatar(
-                    //   child: Text('data'),
-                    // ),
-                    title: Text(core.name),
-                    subtitle: Text('Mark : ${core.percentage}%'),
-                    trailing: PopupMenuButton(
-                      onSelected: (value) async {
-                        if (value == 'edit') {
-                          log('Edit selected with ID: $id');
-                          Get.to(EditStudentMark(mark: core));
-                        } else if (value == 'delete') {
-                          log('Delete selected with ID: $id');
-                          final studentController = Get.find<Student>();
-                          studentController.delectStudentMark(id!);
-                        } else {
-                          log('error');
-                        }
-                      },
-                      itemBuilder: (context) {
-                        return [
-                          const PopupMenuItem(
-                            value: 'edit',
-                            child: Text('Edit'),
-                          ),
-                          const PopupMenuItem(
-                            value: 'delete',
-                            child: Text('Delete'),
-                          )
-                        ];
-                      },
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListView.builder(
+                itemCount: controller.stList.length,
+                itemBuilder: (context, index) {
+                  final core = controller.stList[index];
+                  final id = core.id;
+                  return Card(
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        child: Text((index + 1).toString()),
+                      ),
+                      title: Text(core.name),
+                      subtitle: Text('Mark : ${core.percentage}%'),
+                      trailing: PopupMenuButton(
+                        onSelected: (value) async {
+                          if (value == 'edit') {
+                            log('Edit selected with ID: $id');
+                            Get.to(EditStudentMark(mark: core));
+                          } else if (value == 'delete') {
+                            log('Delete selected with ID: $id');
+                            final studentController = Get.find<Student>();
+                            studentController.delectStudentMark(id!);
+                          } else {
+                            log('error');
+                          }
+                        },
+                        itemBuilder: (context) {
+                          return [
+                            const PopupMenuItem(
+                              value: 'edit',
+                              child: Text('Edit'),
+                            ),
+                            const PopupMenuItem(
+                              value: 'delete',
+                              child: Text('Delete'),
+                            )
+                          ];
+                        },
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             );
           }),
         );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:student_management_using_provider/controller/editcontroller.dart';
+import 'package:student_management_using_provider/controller/submitbutton.dart';
 import 'package:student_management_using_provider/view/homepage.dart';
 import 'package:student_management_using_provider/model/student.dart';
 import 'package:student_management_using_provider/controller/formfiled.dart';
@@ -107,15 +108,21 @@ class EditStudentMark extends StatelessWidget {
                     height: 10,
                   ),
                   const SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed: () {
-                      if (controller.submit(_formKey)) {
-                        Get.offAll(() => const HomePage());
-                      } else {
-                        // Handle submission failure
-                      }
-                    },
-                    child: const Text('Submit'),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: SubmitButton(
+                          onTap: () {
+                            if (controller.submit(_formKey)) {
+                              Get.offAll(() => const HomePage());
+                            } else {
+                              // Handle submission failure
+                            }
+                          },
+                          textcontent: 'Save Changes',
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

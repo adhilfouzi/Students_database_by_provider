@@ -50,34 +50,22 @@ class TextFieldBlue extends StatelessWidget {
             onChanged: onChanged,
             decoration: InputDecoration(
               filled: true,
-              fillColor: Colors.black12,
+              fillColor: const Color.fromARGB(255, 56, 56, 56),
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(40.0),
                 borderSide: const BorderSide(color: Colors.red, width: 2),
               ),
-              // enabledBorder: OutlineInputBorder(
-              //   borderRadius: BorderRadius.circular(40.0),
-              //   borderSide: const BorderSide(color: Colors.black, width: 2),
-              // ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(40.0),
                 borderSide:
                     const BorderSide(color: Colors.greenAccent, width: 2),
               ),
-              iconColor: Colors.greenAccent,
               contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-              prefixIcon: preicondata != null
-                  ? Icon(preicondata, size: 20, color: Colors.green)
-                  : null,
-              suffixIcon: posticondata != null
-                  ? Icon(posticondata, size: 10, color: Colors.green)
-                  : null,
-              // hintText: textcontent,
-              // hintStyle: const TextStyle(
-              //     //color: Color.fromRGBO(0, 0, 0, 0.5),
-              //     fontFamily: 'Raleway',
-              //     fontSize: 10),
+                  const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+              enabledBorder: const OutlineInputBorder(
+                  borderSide:
+                      BorderSide(color: Color.fromARGB(255, 102, 102, 102)),
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
             ),
           ),
         ),

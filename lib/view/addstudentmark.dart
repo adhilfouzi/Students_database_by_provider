@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:student_management_using_provider/controller/submitbutton.dart';
 import 'package:student_management_using_provider/view/homepage.dart';
 import 'package:student_management_using_provider/model/student.dart';
 import 'package:student_management_using_provider/model/studentfunction.dart';
@@ -115,13 +116,11 @@ class AddStudentMark extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          submit();
-                        },
-                        child: const Text('Submit'),
-                      ),
-                    ),
+                        child: SubmitButton(
+                            onTap: () {
+                              submit();
+                            },
+                            textcontent: 'Submit')),
                   ],
                 ),
               ],
