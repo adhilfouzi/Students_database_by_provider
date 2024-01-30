@@ -42,15 +42,12 @@ class TextFieldBlue extends StatelessWidget {
           child: TextFormField(
             autovalidateMode: AutovalidateMode.onUserInteraction,
             inputFormatters: inputFormatters,
-            //enabled: enabled == null ? true : false,
-            //obscureText: obscureText == null ? false : true,
             keyboardType: keyType,
             validator: validator,
             controller: controller,
             onChanged: onChanged,
             decoration: InputDecoration(
               filled: true,
-              fillColor: const Color.fromARGB(255, 56, 56, 56),
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(40.0),
                 borderSide: const BorderSide(color: Colors.red, width: 2),

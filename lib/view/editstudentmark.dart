@@ -36,8 +36,6 @@ class EditStudentMark extends StatelessWidget {
                     controller: controller.nameController,
                     textcontent: 'Student Name',
                   ),
-                  // Similar text fields for other subjects
-
                   TextFieldBlue(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -116,7 +114,13 @@ class EditStudentMark extends StatelessWidget {
                             if (controller.submit(_formKey)) {
                               Get.offAll(() => const HomePage());
                             } else {
-                              // Handle submission failure
+                              Get.snackbar(
+                                'Error',
+                                "Student mark not added!",
+                                snackPosition: SnackPosition.BOTTOM,
+                                backgroundColor: Colors.red,
+                                colorText: Colors.white,
+                              );
                             }
                           },
                           textcontent: 'Save Changes',

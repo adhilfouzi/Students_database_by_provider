@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:student_management_using_provider/controller/dark.dart';
 import 'package:student_management_using_provider/view/addstudentmark.dart';
 import 'package:student_management_using_provider/model/studentfunction.dart';
 import 'package:student_management_using_provider/view/editstudentmark.dart';
@@ -12,7 +13,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(Student());
-    Dark dark = Dark();
+    Dark dark = Get.put(Dark()); //Dark();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Student Management'),
@@ -57,7 +58,7 @@ class HomePage extends StatelessWidget {
                             log('Edit selected with ID: $id');
                             Get.to(EditStudentMark(mark: core));
                           } else if (value == 'delete') {
-                            log('Delete selected with ID: $id');
+                            Get.log('Delete selected with ID: $id');
                             final studentController = Get.find<Student>();
                             studentController.delectStudentMark(id!);
                           } else {
@@ -93,26 +94,5 @@ class HomePage extends StatelessWidget {
         child: const Icon(Icons.add),
       ),
     );
-  }
-}
-
-class Dark extends GetxController {
-  var isDark = false.obs;
-  var toolTip = ''.obs;
-  var icon = Icons.wb_sunny_outlined.obs;
-
-  Future<void> toggleTheme() async {
-    if (!isDark.value) {
-      Get.changeTheme(ThemeData.dark());
-      toolTip.value = 'Switch to Light Theme';
-      icon.value = Icons.wb_sunny;
-      update();
-    } else {
-      Get.changeTheme(ThemeData.light());
-      toolTip.value = 'Switch to Dark Theme';
-      icon.value = Icons.wb_sunny_outlined;
-      update();
-    }
-    isDark.value = !isDark.value;
   }
 }

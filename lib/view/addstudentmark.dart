@@ -41,8 +41,6 @@ class AddStudentMark extends StatelessWidget {
                   controller: _nameController,
                   textcontent: 'Student Name',
                 ),
-                // Similar text fields for other subjects
-
                 TextFieldBlue(
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -151,14 +149,37 @@ class AddStudentMark extends StatelessWidget {
           arabic: _arabicController.text,
           percentage: percentage.toString());
 
-      // Get the instance of the Student controller
-      final studentController = Get.find<Student>();
+      Get.defaultDialog(
+        title: 'Confirmation',
+        content: const Text('Do you want to add this student mark?'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: const Text('Cancel'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Get.back();
+              final studentController = Get.find<Student>();
 
-      // Add the student mark using the controller
-      studentController.addStudentMark(studentMark);
+              studentController.addStudentMark(studentMark);
 
-      // Navigate back to the home page
-      Get.offAll(() => HomePage());
+              Get.snackbar(
+                'Success',
+                'Student mark has been added!',
+                snackPosition: SnackPosition.BOTTOM,
+                backgroundColor: Colors.green,
+                colorText: Colors.white,
+              );
+
+              Get.offAll(() => const HomePage());
+            },
+            child: const Text('Add'),
+          ),
+        ],
+      );
     }
   }
 }
